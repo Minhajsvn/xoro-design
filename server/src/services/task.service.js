@@ -33,7 +33,7 @@ const updateTask = async (id, updates) => {
 
 const deleteTask = async (id) => {
     try {
-        const task = await Task.findByIdAndUpdate(id, { deleted: true }, { new: true });
+        const task = await Task.findByIdAndDelete(id);
         if(!task){
             throw new Error('Task not founded')
         }

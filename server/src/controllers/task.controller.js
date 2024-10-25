@@ -12,8 +12,9 @@ const getTasks = async (req, res) => {
 
 const createTask = async (req, res) => {
     try {
+        console.log(req.body);
         const newTask = await taskService.createNewTask(req.body);
-        res.status(200).send({ message: 'Created new task', newTask })
+        res.status(200).send({ message: 'Created new task', task: newTask })
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
