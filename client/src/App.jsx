@@ -15,7 +15,7 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('http://localhost:8082/tasks');
+      const response = await axios.get('https://xoro-design-1.onrender.com/tasks');
       setTasks(response.data.tasks);
     } catch (error) {
       console.error({ message: error.message });
@@ -24,7 +24,7 @@ function App() {
 
   const createNewTasks = async (data) => {
     try {
-      const response = await axios.post('http://localhost:8082/tasks', data);
+      const response = await axios.post('https://xoro-design-1.onrender.com/tasks', data);
       // console.log(response.data);
       setTasks((prevState) => [...prevState, response.data.task]);
     } catch (error) {
@@ -34,7 +34,7 @@ function App() {
   
   const updateTask = async (id, updates) => {
     try {
-      const response = await axios.put(`http://localhost:8082/tasks/${id}`, updates);
+      const response = await axios.put(`hhttps://xoro-design-1.onrender.com/tasks/${id}`, updates);
       setTasks((prevState) =>
         prevState.map((task) => 
           task._id === id ? { ...task, ...response.data.task } : task
@@ -47,8 +47,7 @@ function App() {
 
   const deleteTask = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:8082/tasks/${id}`);
-      console.log(response);
+      await axios.delete(`https://xoro-design-1.onrender.com/tasks/${id}`);
       setTasks((prevState) =>
         prevState.filter((task) => task._id !== id )
       );
